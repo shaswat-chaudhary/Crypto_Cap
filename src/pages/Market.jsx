@@ -27,7 +27,7 @@ export const Market = () => {
   const [pages, setPages] = useState(1);
 
   const handlerPage = (selected) => {
-    if (selected >= 1 && selected <= coins.length / 10 && selected !== pages) {
+    if (selected >= 1 && selected <= AllCoins.length / 10 && selected !== pages) {
       setPages(selected)
     }
   }
@@ -85,7 +85,7 @@ export const Market = () => {
 
             {
               btn.map((btn, index) => (
-                <button key={btn.value}
+                <button key={btn.value} type='index'
                   onClick={() => handlerAllChange(btn.value)}
                   className={`active border border-slate-700 text-[13px] rounded-md font-semibold py-1.5 md:px-5 grow
                   ${btn.value === button ? 'bg-green-300' : 'bg-gray-100'}
@@ -130,6 +130,7 @@ export const Market = () => {
                   })
 
                   .slice((pages - 1) * 10, (pages - 1) * 10 + 10)
+
 
                   .map((coin, index) => (
 
@@ -205,7 +206,7 @@ export const Market = () => {
 
         <div className='mx-2 md:mx-24 mt-2'>
           {
-            AllCoins.length > 0 && <div
+            AllCoins.length >  0 && <div
               className='w-full bg-slate-300 p-1 rounded-lg'
             >
 
@@ -218,7 +219,7 @@ export const Market = () => {
                   <GoChevronLeft className='font-bold text-lg'/>
                 </button>
 
-                {[...Array(AllCoins.length / 10)].map((_, index) => {
+                {[...Array(coins.length / 10)].map((_, index) => {
                   return <button
                     key={index}
                     className={`rounded-full ${pages === index + 1 ? "bg-gray-400 w-8 h-8" : ""}`}
