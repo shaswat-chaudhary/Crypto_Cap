@@ -4,7 +4,6 @@ import { AppContext } from '../context/AppContext';
 import { Link } from 'react-router-dom';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { News } from '../components/News';
-import { Spinner } from '../components/Spinner';
 import { LineChart } from '../components/LineChart';
 
 
@@ -109,7 +108,7 @@ export const CoinsPage = () => {
         </span>
       </div>
     
-          <News />
+          {/* <News /> */}
 
     </div>
   )
