@@ -3,7 +3,6 @@ import { AppContext } from '../context/AppContext'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { IoTrendingUp, IoTrendingDownOutline } from 'react-icons/io5'
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 export const Market = () => {
@@ -150,14 +149,6 @@ export const Market = () => {
                               <p className='font-semibold text-gray-600 md:w-1/2'>{coin.symbol.toUpperCase()}</p>
                             </div>
 
-                          </div>
-
-                          <div>
-                            {coin.price_change_percentage_24h < 0 ? (
-                              <IoTrendingDownOutline size={30} color='red' />
-                            ) : (
-                              <IoTrendingUp size={30} color='green' />
-                            )}
                           </div>
 
                           <div className='flex flex-col md:flex-row md:gap-10 md:w-[25%] md:justify-evenly text-end md:ml-40'>

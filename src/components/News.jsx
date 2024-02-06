@@ -8,15 +8,21 @@ export const News = () => {
 
     const { news } = useContext(AppContext);
 
+    const topNews = news.slice(0, 4);
+
     const [loading, setLoading] = useState(false);
 
 
     return (
         <div className='flex flex-col gap-2'>
             {
-                loading ? (<Spinner />) : (
-                    news.slice(0, 4).map((article, index) => (
-                        
+                loading ? (<Spinner />) : topNews.length === 0 ? (
+                    <div className='w-full p-5'>
+                        <p className='text-center text-lg'>Data Not Found</p>
+                    </div>
+                ) : (
+                    topNews.map((article, index) => (
+
                         <div key={index} article={article}>
 
                             <Link to={article?.url}>
