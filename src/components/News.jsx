@@ -8,7 +8,9 @@ export const News = () => {
 
     const { news } = useContext(AppContext);
 
-    const topNews = news.slice(0, 4);
+    const topNews = news.slice(0, 5);
+
+    console.log(topNews, 'topNews')
 
     const [loading, setLoading] = useState(false);
 

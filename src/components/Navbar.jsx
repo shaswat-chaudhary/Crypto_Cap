@@ -23,7 +23,7 @@ export const Navbar = () => {
 
                 <div className='p-2 md:h-20 gap-0 flex items-center w-full justify-between md:px-24 relative'>
 
-                    <h4 onClick={() => navigate('/')} className='py-2 w-52 md:text-2xl text-xl font-bold cursor-pointer'>
+                    <h4 onClick={() => navigate('/')} className='py-2 w-52 text-2xl font-bold cursor-pointer'>
                         Crypto<span className='text-[#0FAE96]'>Cap</span>
                     </h4>
 
@@ -54,7 +54,7 @@ export const Navbar = () => {
                     </ul>
 
 
-                    <div>
+                    <div className='mr-2'>
                         <select
                             value={currency}
                             onChange={currencyChange}

@@ -108,13 +108,8 @@ export const CoinsPage = () => {
           {coinInfo?.description?.en.split("").slice(0, 300).join("") + "..."}
         </span>
       </div>
-
-      {
-        loading ? (<Spinner />) : (
+    
           <News />
-        )
-      }
-
 
     </div>
   )
