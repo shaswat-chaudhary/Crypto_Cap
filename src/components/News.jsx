@@ -15,7 +15,7 @@ export const News = () => {
         <div className='flex flex-col gap-2'>
             {
                 loading ? (<Spinner />) : (
-                    news.splice(0, 4).map((article, index) => (
+                    news.slice(0, 4).map((article, index) => (
                         
                         <div key={index} article={article}>
 
