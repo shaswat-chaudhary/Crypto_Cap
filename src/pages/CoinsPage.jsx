@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import { News } from '../components/News';
 import { LineChart } from '../components/LineChart';
-import { Spinner } from '../components/Spinner';
 
 
 export const CoinsPage = () => {
@@ -14,11 +13,9 @@ export const CoinsPage = () => {
 
   const [coinInfo, setCoinInfo] = useState([]);
 
-  const { symbol, news } = useContext(AppContext);
+  const { symbol} = useContext(AppContext);
 
   const [loading, setLoading] = useState(false);
-
-  const topNews = news.splice(0, 5);
 
 
   useEffect(() => {
@@ -110,23 +107,6 @@ export const CoinsPage = () => {
           {coinInfo?.description?.en.split("").slice(0, 300).join("") + "..."}
         </span>
       </div>
-
-      {
-        loading ? (<Spinner />) : topNews.length === 0 ? (
-          <div className='w-full p-5'>
-            <p className='text-center text-lg'>Data Not Found</p>
-          </div>
-        ) : (
-          <div className='flex flex-col gap-2'>
-            <p className='text-xl font-semibold'>Top News</p>
-            {
-              topNews.map((article, index) => (
-                <News key={index} article={article} />
-              ))
-            }
-          </div>
-        )
-      }
     
           {/* <News /> */}
 
