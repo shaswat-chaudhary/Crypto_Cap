@@ -33,7 +33,7 @@ export const Header = () => {
             </div>
 
 
-            <h5 className='text-[#0D3E36] font-semibold ml-2 pt-5 text-lg'>
+            <h5 className='text-[#0D3E36] font-semibold mx-3 py-3 text-lg'>
                 Market Trend
             </h5>
 

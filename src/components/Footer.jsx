@@ -17,7 +17,7 @@ export const Footer = () => {
                             <h4 onClick={() => navigate('/')} className='font-semibold text-2xl cursor-pointer'>
                                 Crypto<span className='text-[#0FAE96]'>Cap</span>
                             </h4>
-                            <div className='text-[#808080] text-2xl flex justify-between w-36'>
+                            <div className='text-[#808080] text-2xl flex justify-between w-36 '>
                                 <BsInstagram />
                                 <BsFacebook />
                                 <FaXTwitter />
