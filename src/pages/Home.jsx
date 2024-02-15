@@ -7,7 +7,7 @@ import { Footer } from '../components/Footer'
 
 export const Home = () => {
   return (
-    <div className='w-full bg-white h-screen'>
+    <div className='w-full h-screen'>
       <Navbar className='sticky top-0 z-50'/>
       <Header />
       <Features />

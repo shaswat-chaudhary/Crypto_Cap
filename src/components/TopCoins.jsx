@@ -15,7 +15,9 @@ const TopCoins = ({ coin }) => {
         <div className='w-full flex-nowrap'>
 
             <div onClick={() => navigate('/' + coin?.id)}
-                className='w-[297px] px-5 py-4 flex flex-col justify-between rounded-2xl bg-cyan-100 border border-[#808080] cursor-pointer'>
+                className='w-[297px] px-5 py-4 flex flex-col justify-between rounded-2xl bg-cyan-100 border-2 border-[#808080] cursor-pointer hover:border-[#646cff]
+                transition duration-150
+                '>
 
                 <div className='w-full flex flex-col gap-4'>
 

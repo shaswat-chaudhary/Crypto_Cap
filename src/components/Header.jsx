@@ -16,11 +16,11 @@ export const Header = () => {
             <div className='flex flex-col md:w-2/3 mx-auto w-full justify-center text-center '>
 
                 <div className='gap-10'>
-                    <h3 className='text-[#0D3E36] text-2xl md:text-4xl font-bold p-2.5'>
+                    <h3 className='text-[#0FAE96] text-2xl md:text-4xl font-bold p-2.5'>
                         Start and Build Your Crypto Portfolio Here
                     </h3>
 
-                    <p className='font-Robot font-normal text-lg text-[#4D625F] p-2.5'>
+                    <p className='font-Robot font-normal text-lg text-[#d6dedd] p-2.5'>
                         Only at CryptoCap, you can build a good portfolio and learn best practices about cryptocurrency.
                     </p>
                 </div>
@@ -33,7 +33,7 @@ export const Header = () => {
             </div>
 
 
-            <h5 className='text-[#0D3E36] font-semibold mx-3 py-3 text-lg'>
+            <h5 className='text-white font-semibold mx-3 py-3 text-lg'>
                 Market Trend
             </h5>
 
@@ -45,7 +45,7 @@ export const Header = () => {
                         </div>
                     ) :
                     (
-                        <div className='flex items-center overflow-x-scroll scroll scroll-smooth whitespace-normal scrollbar-hide gap-6 md:gap-14 mx-2'>
+                        <div className='flex items-center overflow-x-scroll scroll scroll-smooth whitespace-normal scrollbar-hide gap-6 md:gap-14 mx-3'>
                             {topCoins.map((coin) => (
                                 <TopCoins key={coin.id} coin={coin} />
                             ))}

@@ -74,31 +74,46 @@ export const LineChart = () => {
         },
         xaxis: {
             type: 'datetime',
+            labels: {
+                style: {
+                    colors: '#fff',
+                }
+            },
         },
         title: {
             text: 'Chart',
             align: 'left',
+            style: {
+                color: '#fff'
+            }
         },
+        
         yaxis: {
             tooltip: {
                 enabled: true,
             },
+            labels: {
+                style: {
+                    colors: '#fff'
+                }
+            },
+            
         },
-
+        
     };
 
 
     return (
         <div>
 
-            <div className='gap-5 flex justify-around my-4 mx-2 md:w-1/2'>
+            <div className='gap-5 flex justify-around my-4 md:w-1/2'>
                 {
                     chartDays.map((day, index) => (
                         <button
                             key={day.value}
                             onClick={() => setDays(day.value)}
                             className={`border border-slate-700 text-sm rounded-md font-semibold py-1 md:text-[15px] grow ${day.value === days ? 'bg-green-200' : 'bg-gray-100'}
-                             hover:bg-green-300`}
+                             hover:bg-green-300 hover:border-[#646cff] transition duration-150`}
                         >
                             {day.label}
                         </button>
@@ -109,19 +124,18 @@ export const LineChart = () => {
             {
                 isChart ? (
                     <Chart
+                    className='mx-0 bg-[#69686825] text-white rounded-md p-2 md:mx-24'
                         options={options}
                         series={series}
                         type="line"
                         width="100%"
                         height="400"
+
                     />
                 ) : (
                     <Spinner />
                 )
             }
-
-
-
         </div >
 
     )

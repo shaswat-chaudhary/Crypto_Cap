@@ -61,17 +61,17 @@ export const Market = () => {
 
       <div className='w-full'>
 
-        <div className='py-4 mx-2 md:mx-24 space-y-3 md:space-y-6'>
-          <h3 className='font-bold text-3xl text-[#0D3E36]'>
+        <div className='py-4 mx-3 md:mx-24 space-y-3 md:space-y-6'>
+          <h3 className='font-bold text-3xl text-[#0FAE96]'>
             Market Update
           </h3>
-          <p className='font-semibold text-sm text-[#4D625F]'>
+          <p className='text-sm text-[#a1cdc6]'>
             Cryptocurrency Categories
           </p>
         </div>
 
-        <form className='w-1/2 p-2 mx-2 border-black border-[1px] rounded-md h-10 mb-3 md:mx-24'>
-          <input className='w-full h-full bg-transparent outline-none'
+        <form className='w-3/4 md:w-1/2 p-2 mx-3 border-white text-white border-[1px] rounded-lg h-10 mb-3 md:mx-24'>
+          <input className='w-full h-full bg-transparent outline-none text-white'
             type="text"
             placeholder="Search Coin"
             onChange={(e) => setSearch(e.target.value)} />
@@ -80,15 +80,15 @@ export const Market = () => {
 
         <div>
 
-          <div className='flex flex-row gap-4 mx-2 md:mx-24 md:gap-10 w-3/4 md:w-1/4 mb-3'>
+          <div className='flex flex-row gap-4 mx-3 md:mx-24 md:gap-10 w-3/4 md:w-1/4 mb-3'>
 
             {
               btn.map((btn, index) => (
                 <button key={btn.value} type='index'
                   onClick={() => handlerAllChange(btn.value)}
-                  className={`active border border-slate-700 text-[13px] rounded-md font-semibold py-1.5 md:px-5 grow
-                  ${btn.value === button ? 'bg-green-300' : 'bg-gray-100'}
-                  hover:bg-green-300`}>
+                  className={`btn border transition duration-150 text-white text-sm rounded-lg py-1.5 md:px-5 grow
+                  ${btn.value === button ? 'border-[#646cff] bg-slate-900' : ''}
+                  hover:border-white`}>
                   {btn.label}
                 </button>
               ))
@@ -96,7 +96,7 @@ export const Market = () => {
 
           </div>
 
-          <div className='h-[80vh] overflow-scroll md:mx-24 mx-2'>
+          <div className='h-[80vh] overflow-scroll md:px-24 px-3 scrollbar-hide'>
 
             <div className='hidden md:flex justify-between rounded-md mb-2 border-slate-700 border-[1px] py-2 px-10 bg-slate-200 sticky top-0'>
 
@@ -122,10 +122,11 @@ export const Market = () => {
               {
                 AllCoins
                   .filter((coin) => {
-                    return search.toLowerCase() === ""
-                      ? coin :
+                    return search.toLowerCase() === "" ? coin :
                       coin.name.toLowerCase().includes(search) ||
-                      coin.symbol.toLowerCase().includes(search)
+                      coin.name.toUpperCase().includes(search) || 
+                      coin.symbol.toLowerCase().includes(search) || 
+                      coin.symbol.toUpperCase().includes(search)
                   })
 
                   .slice((pages - 1) * 10, (pages - 1) * 10 + 10)
@@ -136,7 +137,8 @@ export const Market = () => {
                     <div key={coin.id} coin={coin}>
 
                       <Link to={'/' + coin?.id}>
-                        <div className='w-full flex justify-between rounded-lg border-slate-700 border-[1px] py-2 md:px-10 px-3 md:mx-0 mb-2 text-center items-center bg-cyan-100'>
+                        <div className='w-full flex justify-between rounded-lg border-slate-700 border-[1px] py-2
+                         md:px-10 px-3 md:mx-0 mb-2 mt-2 text-center items-center bg-cyan-100 hover:scale-105 hover:border-[#646cff] transition duration-300'>
 
                           <div className='flex gap-6 text-center items-center'>
 
@@ -195,7 +197,7 @@ export const Market = () => {
           }}
         /> */}
 
-        <div className='mx-2 md:mx-24 mt-2'>
+        <div className='mx-3 md:mx-24 mt-2'>
           {
             AllCoins.length >  0 && <div
               className='w-full bg-slate-300 p-1 rounded-lg'

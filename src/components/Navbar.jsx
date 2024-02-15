@@ -17,17 +17,17 @@ export const Navbar = () => {
 
     return (
 
-        <div className='sticky top-0 z-50 w-full mx-auto bg-white'>
+        <div className='sticky top-0 z-50 w-full mx-auto bg-slate-950'>
 
-            <nav className=' border-slate-700 border-b-[1px] flex justify-between '>
+            <nav className=' border-slate-700 border-b-[1px] flex justify-between'>
 
                 <div className='p-2 md:h-20 gap-0 flex items-center w-full justify-between md:px-24 relative'>
 
-                    <h4 onClick={() => navigate('/')} className='py-2 w-52 text-2xl font-bold cursor-pointer'>
+                    <h4 onClick={() => navigate('/')} className='py-2 w-52 text-2xl text-white font-bold cursor-pointer'>
                         Crypto<span className='text-[#0FAE96]'>Cap</span>
                     </h4>
 
-                    <ul className='gap-20 font-semibold text-lg hidden md:flex p-2'>
+                    <ul className='gap-20 font-semibold text-blue-500 text-lg hidden md:flex p-2'>
                         <li >
                             <Link>
                                 Home
@@ -58,7 +58,7 @@ export const Navbar = () => {
                         <select
                             value={currency}
                             onChange={currencyChange}
-                            className='w-24 h-10 outline-none bg-slate-200 border border-slate-600 rounded-[4px] px-1'
+                            className='w-24 h-10 bg-black font-medium outline-none text-[#646cff] border border-slate-600 rounded-md px-2 hover:border-[#646cff] transition duration-200 cursor-pointer'
                         >
 
                             <option value={"INR"}>INR</option>
@@ -66,9 +66,9 @@ export const Navbar = () => {
                         </select>
                     </div>
 
-                    <Link>
+                    <Link to={'https://www.linkedin.com/in/shaswat-chaudhary/'}>
                         <img onClick={clickHandler}
-                            className='cursor-pointer w-12 h-12 rounded-full'
+                            className='cursor-pointer w-11 h-11 rounded-full ring-1'
                             src='https://avatars.githubusercontent.com/u/63004581?v=4'
                             alt='user'
                         />
