@@ -124,7 +124,7 @@ export const LineChart = () => {
             {
                 isChart ? (
                     <Chart
-                    className='mx-0 bg-[#69686825] text-white rounded-md p-2 md:mx-24'
+                    className=' bg-[#69686825] text-white rounded-md p-2'
                         options={options}
                         series={series}
                         type="line"
