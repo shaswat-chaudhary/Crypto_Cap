@@ -18,6 +18,20 @@ export const CoinsPage = () => {
   const [loading, setLoading] = useState(false);
 
 
+  function customToUpperCase(name) {
+    let result = '';
+    for (let i = 0; i < name.length; i++) {
+      let char = name.charCodeAt(i);
+      if (char >= 97 && char <= 122) {
+        result += String.fromCharCode(char - 32);
+      } else {
+        result += name.charAt(i);
+      }
+    }
+    return result;
+  }
+
+
   useEffect(() => {
     const fetchCoin = async () => {
       setLoading(true);
@@ -25,7 +39,7 @@ export const CoinsPage = () => {
         const res = await fetch(`https://api.coingecko.com/api/v3/coins/${id}`);
         const data = await res.json();
         setCoinInfo(data);
-      
+
       } catch (error) {
         console.log(error);
       }
@@ -44,13 +58,15 @@ export const CoinsPage = () => {
           <IoIosArrowRoundBack className='w-9 h-9 absolute left-0 top-1 text-white hover:text-[#646cff]' />
         </Link>
         <p className='w-full text-center py-1 text-[#0FAE96]'>
-          {coinInfo?.name}
+          {coinInfo?.name ? customToUpperCase(coinInfo?.name) : 'Loading...'}
         </p>
       </div>
 
       <div className='flex gap-5 text-center items-center py-1'>
         <img src={coinInfo?.image?.large} alt={coinInfo?.name} className='w-12 h-12 rounded-full bg-slate-100 shadow-lg object-contain' />
-        <p className='text-xl font-semibold tracking-wider text-white'>{coinInfo?.symbol}</p>
+        <p className='text-xl font-semibold tracking-wider text-white'>
+          {coinInfo?.symbol ? customToUpperCase(coinInfo?.symbol) : 'Loading...'}
+        </p>
       </div>
 
       <div className='flex justify-between text-center items-center'>
@@ -59,7 +75,7 @@ export const CoinsPage = () => {
         </p>
         <p>{
           coinInfo?.market_data?.price_change_percentage_24h < 0 ? (
-            <span className='text-red-700 font-medium text-lg'>
+            <span className='text-red-500 font-medium text-lg'>
               {coinInfo?.market_data?.price_change_percentage_24h.toFixed(2)}% ▾
             </span>
           ) : (

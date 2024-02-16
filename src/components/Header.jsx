@@ -13,7 +13,7 @@ export const Header = () => {
     return (
         <div className='md:w-[90%] mx-auto mt-12' >
 
-            <div className='flex flex-col md:w-2/3 mx-auto w-full justify-center text-center '>
+            <div className='flex flex-col md:w-2/3 mx-auto w-full justify-center text-center'>
 
                 <div className='gap-10'>
                     <h3 className='text-[#0FAE96] text-2xl md:text-4xl font-bold p-2.5'>
@@ -45,7 +45,7 @@ export const Header = () => {
                         </div>
                     ) :
                     (
-                        <div className='flex items-center overflow-x-scroll scroll scroll-smooth whitespace-normal scrollbar-hide gap-6 md:gap-14 mx-3'>
+                        <div className='flex items-center overflow-x-scroll scroll scroll-smooth whitespace-normal scrollbar-hide gap-5 md:gap-14 snap-x pl-3'>
                             {topCoins.map((coin) => (
                                 <TopCoins key={coin.id} coin={coin} />
                             ))}

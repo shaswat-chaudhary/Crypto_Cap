@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
+import { Spinner } from '../components/Spinner';
 
 export const Market = () => {
 
@@ -120,12 +121,12 @@ export const Market = () => {
 
             <div>
               {
-                AllCoins
+                AllCoins ? (AllCoins
                   .filter((coin) => {
                     return search.toLowerCase() === "" ? coin :
                       coin.name.toLowerCase().includes(search) ||
-                      coin.name.toUpperCase().includes(search) || 
-                      coin.symbol.toLowerCase().includes(search) || 
+                      coin.name.toUpperCase().includes(search) ||
+                      coin.symbol.toLowerCase().includes(search) ||
                       coin.symbol.toUpperCase().includes(search)
                   })
 
@@ -183,6 +184,9 @@ export const Market = () => {
 
                     </div>
                   ))
+                ) : <div className='h-[80vh] flex justify-center'>
+                  <Spinner />
+                </div>
               }
             </div>
           </div>
@@ -199,7 +203,7 @@ export const Market = () => {
 
         <div className='mx-3 md:mx-24 mt-2'>
           {
-            AllCoins.length >  0 && <div
+            AllCoins.length > 0 && <div
               className='w-full bg-slate-300 p-1 rounded-lg'
             >
 
@@ -209,7 +213,7 @@ export const Market = () => {
                   onClick={() => handlerPage(pages - 1)}
                   className={pages > 1 ? "" : "cursor-context-menu text-gray-500"}
                 >
-                  <GoChevronLeft className='font-bold text-lg'/>
+                  <GoChevronLeft className='font-bold text-lg' />
                 </button>
 
                 {[...Array(coins.length / 10)].map((_, index) => {
@@ -226,7 +230,7 @@ export const Market = () => {
                   onClick={() => handlerPage(pages + 1)}
                   className={pages < AllCoins.length / 10 ? "" : "cursor-context-menu text-gray-500"}
                 >
-                  <GoChevronRight className='text-lg font-bold'/>
+                  <GoChevronRight className='text-lg font-bold' />
                 </button>
 
               </div>
