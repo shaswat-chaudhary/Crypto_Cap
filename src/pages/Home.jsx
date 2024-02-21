@@ -7,11 +7,21 @@ import { Footer } from '../components/Footer'
 
 export const Home = () => {
   return (
-    <div className='w-full h-screen'>
-      <Navbar className='sticky top-0 z-50'/>
-      <Header />
-      <Features />
-      <Market />
+    <div className='w-full'>
+      <Navbar />
+
+      <section id='header'>
+        <Header />
+      </section>
+
+      <section id='features'>
+        <Features />
+      </section>
+
+      <section id='market'>
+        <Market />
+      </section>
+
       <Footer />
     </div>
   )

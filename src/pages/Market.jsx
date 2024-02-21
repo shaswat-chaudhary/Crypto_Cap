@@ -121,69 +121,66 @@ export const Market = () => {
 
             <div>
               {
-                AllCoins ? (AllCoins
-                  .filter((coin) => {
-                    return search.toLowerCase() === "" ? coin :
-                      coin.name.toLowerCase().includes(search) ||
-                      coin.name.toUpperCase().includes(search) ||
-                      coin.symbol.toLowerCase().includes(search) ||
-                      coin.symbol.toUpperCase().includes(search)
-                  })
+                AllCoins ? (
+                  AllCoins.filter((item) => (
+                    item.name.toLowerCase().includes(search.toLowerCase()) ||
+                    item.symbol.toLowerCase().includes(search.toLowerCase())
+                  ))
 
-                  .slice((pages - 1) * 10, (pages - 1) * 10 + 10)
+                    .slice((pages - 1) * 10, (pages - 1) * 10 + 10)
 
 
-                  .map((coin, index) => (
+                    .map((coin, index) => (
 
-                    <div key={coin.id} coin={coin}>
+                      <div key={coin.id} coin={coin}>
 
-                      <Link to={'/' + coin?.id}>
-                        <div className='w-full flex justify-between rounded-lg border-slate-700 border-[1px] py-2
+                        <Link to={'/' + coin?.id}>
+                          <div className='w-full flex justify-between rounded-lg border-slate-700 border-[1px] py-2
                          md:px-10 px-3 md:mx-0 mb-2 mt-2 text-center items-center bg-cyan-100 hover:scale-105 hover:border-[#646cff] transition duration-300'>
 
-                          <div className='flex gap-6 text-center items-center'>
+                            <div className='flex gap-6 text-center items-center'>
 
-                            <p className='hidden md:flex'>{index + 1}</p>
-                            <img className='w-10 h-10' src={coin.image} alt={coin.name} />
+                              <p className='hidden md:flex'>{index + 1}</p>
+                              <img className='w-10 h-10' src={coin.image} alt={coin.name} />
 
-                            <div className='flex flex-col md:flex-row md:gap-5 text-start md:w-[300px] md:ml-1'>
-                              <p className='text-xl md:w-1/2'>{coin.name}</p>
-                              <div className='w-[2px] h-5 bg-slate-600 hidden md:flex'></div>
-                              <p className='font-semibold text-gray-600 md:w-1/2'>{coin.symbol.toUpperCase()}</p>
+                              <div className='flex flex-col md:flex-row md:gap-5 text-start md:w-[300px] md:ml-1'>
+                                <p className='text-xl md:w-1/2'>{coin.name}</p>
+                                <div className='w-[2px] h-5 bg-slate-600 hidden md:flex'></div>
+                                <p className='font-semibold text-gray-600 md:w-1/2'>{coin.symbol.toUpperCase()}</p>
+                              </div>
+
                             </div>
 
+                            <div className='flex flex-col md:flex-row md:gap-10 md:w-[25%] md:justify-evenly text-end md:ml-40'>
+
+                              <p className='font-semibold'>{symbol}{coin.current_price}</p>
+
+                              <p>
+                                {coin.price_change_percentage_24h < 0 ?
+                                  (
+                                    <span className='text-red-600'>
+                                      {coin.price_change_percentage_24h.toFixed(2)}%
+                                    </span>
+                                  ) :
+                                  (
+                                    <span className='text-green-600'>
+                                      {coin.price_change_percentage_24h.toFixed(2)}%
+                                    </span>
+                                  )}
+                              </p>
+
+                            </div>
+
+                            <button className='hidden md:flex md:px-3 py-2 text-center text-white bg-[#0FAE96] text-[13px] rounded-md font-semibold '
+                              onClick={() => navigate(`/coins/${coin.id}`)} key={coin.name}>
+                              Trade Now
+                            </button>
+
                           </div>
+                        </Link>
 
-                          <div className='flex flex-col md:flex-row md:gap-10 md:w-[25%] md:justify-evenly text-end md:ml-40'>
-
-                            <p className='font-semibold'>{symbol}{coin.current_price}</p>
-
-                            <p>
-                              {coin.price_change_percentage_24h < 0 ?
-                                (
-                                  <span className='text-red-600'>
-                                    {coin.price_change_percentage_24h.toFixed(2)}%
-                                  </span>
-                                ) :
-                                (
-                                  <span className='text-green-600'>
-                                    {coin.price_change_percentage_24h.toFixed(2)}%
-                                  </span>
-                                )}
-                            </p>
-
-                          </div>
-
-                          <button className='hidden md:flex md:px-3 py-2 text-center text-white bg-[#0FAE96] text-[13px] rounded-md font-semibold '
-                            onClick={() => navigate(`/coins/${coin.id}`)} key={coin.name}>
-                            Trade Now
-                          </button>
-
-                        </div>
-                      </Link>
-
-                    </div>
-                  ))
+                      </div>
+                    ))
                 ) : <div className='h-[80vh] flex justify-center'>
                   <Spinner />
                 </div>

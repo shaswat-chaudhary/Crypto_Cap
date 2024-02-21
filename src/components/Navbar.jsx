@@ -1,6 +1,8 @@
-import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState, useEffect } from 'react'
+import { NavLink, useNavigate } from "react-router-dom";
 import { AppContext } from '../context/AppContext';
+import { Link } from 'react-scroll'
+
 
 export const Navbar = () => {
 
@@ -10,14 +12,39 @@ export const Navbar = () => {
 
     const [click, setClick] = useState(false);
 
+    const [activeLink, setActiveLink] = useState('header');
+
     const clickHandler = () => {
         setClick(!click);
     }
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+
+            if (scrollPosition < 500) {
+                setActiveLink('header');
+            } else if (scrollPosition >= 500 && scrollPosition < 1000) {
+                setActiveLink('features');
+            } else if (scrollPosition >= 1000 && scrollPosition < 1500) {
+                setActiveLink('market');
+            } else if (scrollPosition >= 1500 && scrollPosition < 2500) {
+                setActiveLink('learn');
+            }
+
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
 
     return (
 
-        <div className='sticky top-0 z-50 w-full mx-auto bg-slate-950'>
+        <div className='w-full md:sticky top-0 z-50 mx-auto bg-slate-950'>
 
             <nav className=' border-slate-700 border-b-[1px] flex justify-between'>
 
@@ -28,29 +55,29 @@ export const Navbar = () => {
                     </h4>
 
                     <ul className='gap-20 font-semibold text-blue-500 text-lg hidden md:flex p-2'>
-                        <li >
-                            <Link>
+
+                        <li className={`${activeLink === 'header' ? 'active' : ''} cursor-pointer`}>
+                            <Link to="header" smooth={true} duration={500}>
                                 Home
                             </Link>
                         </li>
-
-                        <li>
-                            <Link>
+                        <li className={`${activeLink === 'features' ? 'active' : ''} cursor-pointer`}>
+                            <Link to="features" smooth={true} duration={500}>
                                 Features
                             </Link>
                         </li>
-
-                        <li>
-                            <Link>
+                        <li className={`${activeLink === 'market' ? 'active' : ''} cursor-pointer`}>
+                            <Link to="market" smooth={true} duration={500}>
                                 Market
                             </Link>
                         </li>
-
                         <li>
-                            <Link>
+                            <Link to="learn" smooth={true} duration={500}>
                                 Learn
                             </Link>
                         </li>
+
+
                     </ul>
 
 
@@ -58,21 +85,20 @@ export const Navbar = () => {
                         <select
                             value={currency}
                             onChange={currencyChange}
-                            className='w-24 h-10 bg-black font-medium outline-none text-[#646cff] border border-slate-600 rounded-md px-2 hover:border-[#646cff] transition duration-200 cursor-pointer'
-                        >
+                            className='w-24 h-10 bg-black font-medium outline-none text-[#646cff] border border-slate-600 rounded-md px-2 hover:border-[#646cff] transition duration-200 cursor-pointer'>
 
                             <option value={"INR"}>INR</option>
                             <option value={"USD"}>USD</option>
                         </select>
                     </div>
 
-                    <Link to={'https://www.linkedin.com/in/shaswat-chaudhary/'}>
+                    <NavLink to={'https://www.linkedin.com/in/shaswat-chaudhary/'}>
                         <img onClick={clickHandler}
                             className='cursor-pointer w-11 h-11 rounded-full ring-1'
                             src='https://avatars.githubusercontent.com/u/63004581?v=4'
                             alt='user'
                         />
-                    </Link>
+                    </NavLink>
 
                     {/* <div style={{ display: click ? 'block' : 'none' }}
                         className='bg-teal-300 w-72 absolute top-16 right-1 rounded-lg'>

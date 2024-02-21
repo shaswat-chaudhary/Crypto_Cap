@@ -9,15 +9,10 @@ import { Spinner } from './Spinner';
 export const LineChart = () => {
 
     const { id } = useParams();
-
     const { currency } = useContext(AppContext);
-
     const [days, setDays] = useState(1);
-
     const [isChart, setIsChart] = useState();
-
     const [loading, setLoading] = useState(false);
-
     const chartDays = [
         {
             label: "1 D",
@@ -41,14 +36,12 @@ export const LineChart = () => {
         },
     ];
 
-
     const fetchChartData = async () => {
         setLoading(true);
         try {
             const res = await fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`);
             const data = await res.json();
             setIsChart(data);
-
         } catch (error) {
             console.log("chart error", error);
         }

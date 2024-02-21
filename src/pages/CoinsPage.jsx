@@ -10,13 +10,9 @@ import { LineChart } from '../components/LineChart';
 export const CoinsPage = () => {
 
   const { id } = useParams();
-
   const [coinInfo, setCoinInfo] = useState([]);
-
   const { symbol, currency } = useContext(AppContext);
-
   const [loading, setLoading] = useState(false);
-
 
   function customToUpperCase(name) {
     let result = '';
@@ -31,7 +27,6 @@ export const CoinsPage = () => {
     return result;
   }
 
-
   useEffect(() => {
     const fetchCoin = async () => {
       setLoading(true);
@@ -39,7 +34,6 @@ export const CoinsPage = () => {
         const res = await fetch(`https://api.coingecko.com/api/v3/coins/${id}`);
         const data = await res.json();
         setCoinInfo(data);
-
       } catch (error) {
         console.log(error);
       }
